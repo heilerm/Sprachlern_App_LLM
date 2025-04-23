@@ -32,6 +32,19 @@ export default function HomePage() {
       </div>
 
       <div className="w-full max-w-xl mx-auto bg-white p-6 rounded-xl shadow">
+        {/* Chat-Historie */}
+        <div
+          className="chat-history mb-4 max-h-64 overflow-y-auto border border-gray-300 rounded p-3"
+        >
+          {chat.map((entry, index) => (
+            <div key={index} className="mb-2">
+              <p className="text-blue-600 font-semibold">Benutzer: {entry.user}</p>
+              <p className="text-green-600">Barista: {entry.response}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Aktuelle Antwort der KI */}
         <p className="text-lg mb-4">
           🧠 KI-Barista:{" "}
           {chat.length > 0
@@ -39,6 +52,7 @@ export default function HomePage() {
             : "Buongiorno! Cosa desidera?"}
         </p>
 
+        {/* Eingabefeld */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -47,29 +61,19 @@ export default function HomePage() {
             setChat([...chat, { user: input, response: "..." }]);
             setInput("");
 
-            // Simulierte KI-Antwort
-            //setTimeout(() => {
-            //  const antwort = `Hmm… "${input}"? Mi sembra delizioso! 🍰`;
-            //  setChat((prev) => [
-            //    ...prev.slice(0, -1),
-            //</div>    { user: input, response: antwort },
-            //  ]);
-            //}, 1000);
-
             // Echte KI-Antwort vom Server
             fetch("/api/chat", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ message: input }),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-            setChat((prev) => [
-                ...prev.slice(0, -1),
-                { user: input, response: data.response },
-            ]);
-    });
-
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ message: input }),
+            })
+              .then((res) => res.json())
+              .then((data) => {
+                setChat((prev) => [
+                  ...prev.slice(0, -1),
+                  { user: input, response: data.response },
+                ]);
+              });
           }}
         >
           <input

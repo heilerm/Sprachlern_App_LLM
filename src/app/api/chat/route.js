@@ -5,6 +5,9 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// Globale Variable für den Chat-Verlauf
+let chatHistory = [];
+
 export async function POST(req) {
   try {
     const { message } = await req.json();
@@ -36,7 +39,16 @@ export async function POST(req) {
     const antwort = chatCompletion.choices[0].message.content;
     console.log("GPT antwortet:", antwort);
 
-    return NextResponse.json({ response: antwort });
+    // Chat-Verlauf aktualisieren
+    chatHistory.push({ user: message, bot: antwort });
+
+    // Nur die letzten 10 Nachrichten speichern
+    if (chatHistory.length > 10) {
+      chatHistory.shift();
+    }
+
+    // Rückgabe der Antwort und des Chat-Verlaufs
+    return NextResponse.json({ response: antwort, history: chatHistory });
   } catch (error) {
     console.error("🔥 SERVER-FEHLER:", error);
     return NextResponse.json(
