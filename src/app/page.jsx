@@ -6,44 +6,97 @@ export default function HomePage() {
   const [chat, setChat] = useState([]);
   const [input, setInput] = useState("");
   const [toReview, setToReview] = useState({}); // Speichert Kategorien und Beispiele
+  const [categoryCounts, setCategoryCounts] = useState({}); // Zähler für Kategorien
   const [selectedLevel, setSelectedLevel] = useState("A1"); // Standardniveau
 
   const handleDrop = async (event) => {
     event.preventDefault();
     const text = event.dataTransfer.getData("text");
 
-    // KI-Analyse oder einfache Schlüsselworterkennung
-    const extractedContent = await analyzeText(text);
+    // Analysiere den Text und extrahiere Präpositionen
+    const { simple, compound, special } = await analyzeText(text);
 
-    // Beispiel: Kategorisierung basierend auf Schlüsselwörtern
-    let category = "Sonstiges";
-    if (extractedContent.includes("di") || extractedContent.includes("da")) {
-      category = "Präpositionen";
+    // Hilfsfunktion zum Hinzufügen oder Aktualisieren eines Worts in der Kategorie
+    const updateCategory = (categoryName, words) => {
+      setToReview((prev) => {
+        const updatedCategory = { ...prev[categoryName] };
+
+        words.forEach((word) => {
+          if (updatedCategory[word]) {
+            updatedCategory[word] += 1; // Zähler erhöhen
+          } else {
+            updatedCategory[word] = 1; // Neues Wort hinzufügen
+          }
+        });
+
+        return {
+          ...prev,
+          [categoryName]: updatedCategory,
+        };
+      });
+    };
+
+    // Aktualisiere die Kategorien
+    if (simple.length > 0) {
+      updateCategory("Einfache Präpositionen", simple);
     }
 
-    // Speichere das Beispiel in der Kategorie
-    setToReview((prev) => ({
+    if (compound.length > 0) {
+      updateCategory("Zusammengesetzte Präpositionen", compound);
+    }
+
+    if (special.length > 0) {
+      updateCategory("Spezielle Präpositionen", special);
+    }
+
+    // Aktualisiere die Zähler für die Kategorien
+    setCategoryCounts((prev) => ({
       ...prev,
-      [category]: [...(prev[category] || []), extractedContent],
+      "Einfache Präpositionen": (prev["Einfache Präpositionen"] || 0) + simple.length,
+      "Zusammengesetzte Präpositionen": (prev["Zusammengesetzte Präpositionen"] || 0) + compound.length,
+      "Spezielle Präpositionen": (prev["Spezielle Präpositionen"] || 0) + special.length,
     }));
   };
 
   const analyzeText = async (text) => {
-    // Liste aller Präpositionen
-    const keywords = ["di", "da", "a", "in", "su", "per", "con", "tra", "fra"];
-    const words = text.split(" ");
-    
-    // Extrahiere nur die Präpositionen, die im Text vorkommen
-    const extracted = words.filter((word) => keywords.includes(word));
-    
-    // Rückgabe: Alle Präpositionen, aber markiere die gefundenen
-    return keywords.map((keyword) => (extracted.includes(keyword) ? keyword : keyword)).join(", ");
+    // Entferne Anführungszeichen aus dem Text
+    const cleanedText = text.replace(/['"]+/g, ""); // Entfernt einfache und doppelte Anführungszeichen
+
+    // Kategorien von Präpositionen
+    const simplePrepositions = ["di", "da", "a", "in", "su", "per", "con", "tra", "fra"];
+    const compoundPrepositions = ["del", "al", "dal", "nel", "sul"];
+    const specialPrepositions = ["verso", "oltre", "sotto", "sopra", "dietro", "davanti", "nonostante", "malgrado", "durante", "fino a", "attraverso", "gegen"];
+
+    // Zerlege den Text in Wörter
+    const words = cleanedText.toLowerCase().split(/\s+/); // Konvertiere in Kleinbuchstaben und trenne nach Leerzeichen
+
+    // Extrahiere Präpositionen aus jeder Kategorie
+    const extractedSimple = words.filter((word) => simplePrepositions.includes(word));
+    const extractedCompound = words.filter((word) => compoundPrepositions.includes(word));
+    const extractedSpecial = words.filter((word) => specialPrepositions.includes(word));
+
+    // Rückgabe: Nur die gefundenen Präpositionen, gruppiert nach Kategorie
+    return {
+      simple: extractedSimple,
+      compound: extractedCompound,
+      special: extractedSpecial,
+    };
+  };
+
+  const handleDragStart = (e, text) => {
+    // Prüfe, ob ein Text markiert wurde
+    const selection = window.getSelection().toString();
+    if (selection) {
+      e.dataTransfer.setData("text", selection); // Nur den markierten Text übertragen
+    } else {
+      e.dataTransfer.setData("text", text); // Fallback: Gesamten Text übertragen
+    }
   };
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
       {/* Überschrift und Dropdown */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex items-center gap-4 mb-8">
         <h1 className="text-4xl font-bold">Sprachwelt</h1>
         <select
           className="border border-gray-300 rounded px-3 py-2"
@@ -86,16 +139,23 @@ export default function HomePage() {
         {/* Chat-Bereich */}
         <div className="flex-1 bg-white p-6 rounded-xl shadow">
           {/* Chat-Historie */}
-          <div
-            className="chat-history mb-4 max-h-64 overflow-y-auto border border-gray-300 rounded p-3"
-          >
+          <div className="chat-history mb-4 max-h-64 overflow-y-auto border border-gray-300 rounded p-3">
+            <h2 className="text-xl font-bold mb-4">Chat-Historie</h2>
             {chat.map((entry, index) => (
               <div key={index} className="mb-2">
-                <p className="text-blue-600 font-semibold">Benutzer: {entry.user}</p>
+                {/* Benutzer-Eingabe */}
+                <p
+                  className="text-blue-600 font-semibold"
+                  draggable="true"
+                  onDragStart={(e) => handleDragStart(e, entry.user)}
+                >
+                  Benutzer: {entry.user}
+                </p>
+                {/* KI-Antwort */}
                 <p
                   className="text-green-600"
                   draggable="true"
-                  onDragStart={(e) => e.dataTransfer.setData("text", entry.response)}
+                  onDragStart={(e) => handleDragStart(e, entry.response)}
                 >
                   Barista: {entry.response}
                 </p>
@@ -108,7 +168,7 @@ export default function HomePage() {
             🧠 KI-Barista:{" "}
             {chat.length > 0
               ? chat[chat.length - 1].response
-              : "Buongiorno! Cosa desidera?"}
+              : "Buongiorno! Benvenuto nel mondo della lingua italiana!"}
           </p>
 
           {/* Eingabefeld */}
@@ -159,14 +219,17 @@ export default function HomePage() {
         >
           <h2 className="text-2xl font-bold mb-4">Noch zu vertiefen</h2>
           <p className="text-sm text-gray-600 mb-4">
-            Sie können zu vertiefende Texte aus dem Chat hier per Drag-and-Drop hineinziehen.
+            Sie können zu vertiefende Texte aus der Chat-Historie hier per Drag-and-Drop hineinziehen. Das geht
+            indem sie entweder einzelne Stelle markieren oder den gesamten Text. Die App analysiert den Text für sie.
           </p>
           {Object.keys(toReview).map((category) => (
             <div key={category} className="mb-4">
               <h3 className="text-xl font-semibold">{category}</h3>
               <ul className="list-disc pl-6">
-                {toReview[category].map((example, index) => (
-                  <li key={index}>{example}</li>
+                {Object.entries(toReview[category]).map(([word, count]) => (
+                  <li key={word}>
+                    {word} ({count}x)
+                  </li>
                 ))}
               </ul>
             </div>
