@@ -1,5 +1,12 @@
 "use client";
 import { useState } from "react";
+import DropZoneWithFeatures from "./components/DropZoneWithFeatures";
+import { generateGlossary } from "./components/generateGlossary"; // Importiere die Funktion hier
+import SentenceStructure from "./components/SentenceStructure";
+import { useEffect } from "react";
+import { useRef } from "react";
+import { useMemo } from "react";
+import { useCallback } from "react";
 
 export default function HomePage() {
   const [currentWorld, setCurrentWorld] = useState("cafe");
@@ -210,9 +217,10 @@ export default function HomePage() {
             </button>
           </form>
         </div>
+        <DropZoneWithFeatures />
 
         {/* Bereich für "Noch zu vertiefen" */}
-        <div
+        {/*<div
           className="w-1/3 bg-gray-100 p-6 rounded-xl shadow"
           onDrop={handleDrop}
           onDragOver={(e) => e.preventDefault()}
@@ -234,7 +242,7 @@ export default function HomePage() {
               </ul>
             </div>
           ))}
-        </div>
+        </div>*/}
       </div>
     </main>
   );
