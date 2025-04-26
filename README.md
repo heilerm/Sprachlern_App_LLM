@@ -1,3 +1,59 @@
+# Sprachwelt - Investor Story
+
+Willkommen zur Investor Story von **Sprachwelt**, einer innovativen Sprachlernplattform, die mit KI-Unterstützung neue Maßstäbe setzt.
+
+## Vision
+Wir glauben daran, dass Sprache nicht nur aus Vokabeln und Grammatik besteht, sondern aus **Erleben**. Mit Sprachwelt wird das Lernen zu einer interaktiven Entdeckungsreise:
+- **Drag & Drop** von Chat-Texten in Analysebereiche
+- **Automatische Erkennung von Satzstrukturen** (Subjekt, Verb, Artikel etc.)
+- **Farbliche Markierung und Sofort-Feedback**
+- **Intelligente Erkennung von Präpositionen** (einfach, zusammengesetzt, speziell)
+- **Popup-Erklärungen** mit kulturellem Kontext, Grammatik, CEFR-Level und Video-Verlinkung
+
+## Warum Sprachwelt?
+### 1. Sprachlernen neu gedacht
+Sprachwelt bietet eine immersive, intuitive Oberfläche, die sofortige Erkenntnisse liefert und durch Farben und Popups das Lernen emotionalisiert.
+
+### 2. KI-Unterstützung auf hohem Niveau
+- Erkennung und Analyse von Satzteilen
+- CEFR-Niveau-abhängige Textanalyse
+- Sanfte Begleitung durch Erklärungen, Tipps und kulturelle Hinweise
+
+### 3. Für moderne Lerner
+- **Kein erzwungenes Gendern**, sondern kultursensibles Sprachlernen
+- **Smooth User Experience** mit weichem Scrollen, Drag & Drop, dynamischen Popups
+- Flexibel erweiterbares Dictionary-System
+
+## Technische Highlights
+- **Next.js**-basierte App mit modularen Komponenten
+- **React Hooks** für dynamische Interaktionen
+- **TailwindCSS** für modernes, responsives Design
+- **Progressives Rendering** für Sofortfeedback auch bei großen Texten
+
+## Features im Detail
+- Automatisches Scrollen in der Chat-Historie
+- Farblich codierte Satzanalyse
+- Split der Präpositionen je nach Level (A1, A2, B1...)
+- Popups mit Bedeutungen, grammatikalischer Einordnung und Kulturinfos
+- Smooth Drag & Drop Funktionalität für Chattexte
+
+## Next Steps
+- Ausbau der CEFR-Level-gestützten Grammatikannotationen
+- Einführung smarter Quizfunktionen basierend auf Fehleranalyse
+- Community-Features (Peer-to-Peer-Sprachtraining)
+- Mobile App Version (PWA)
+
+## Unser Ziel
+**Sprachwelt** wird DIE Plattform für modernes, immersives, kulturell intelligentes Sprachlernen - für Erwachsene, Professionals und Bildungseinrichtungen.
+
+---
+
+> **Bereit, die Sprachwelt zu erobern?**
+
+**Let's build the future of language learning. Together.** 🌍🚀
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
