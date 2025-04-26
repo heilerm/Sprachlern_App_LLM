@@ -1,57 +1,72 @@
+"use client";
+import React, { useEffect, useState } from "react";
 
-import React, { useEffect, useState } from 'react';
-
-const CEFR_LEVELS = {
-  A1: 1, A2: 2, B1: 3, B2: 4, C1: 5, C2: 6
-};
-
-const LEVEL_NAMES = {
-  1: 'A1', 2: 'A2', 3: 'B1', 4: 'B2', 5: 'C1', 6: 'C2'
-};
-
-export default function TextLevelAnalyzer({ text, glossary }) {
-  const [level, setLevel] = useState('?');
-  const [averageLevel, setAverageLevel] = useState('?');
-  const [difficultWords, setDifficultWords] = useState([]);
+export default function TextLevelAnalyzer({ text, level, world }) {
+  const [dictionary, setDictionary] = useState({});
 
   useEffect(() => {
-    if (!text || !glossary) return;
+    fetch("/dictionary.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setDictionary(data);
+      });
+  }, []);
 
-    const tokens = text.toLowerCase().split(/\s+/).map(w => w.replace(/[.,!?]/g, ''));
-    let max = 0;
-    let total = 0;
-    let count = 0;
-    const difficult = [];
+  if (!text || !dictionary[world]) {
+    return null;
+  }
 
-    tokens.forEach((word) => {
-      const entry = glossary[word];
-      if (entry && entry.cefr_level && CEFR_LEVELS[entry.cefr_level]) {
-        const lvl = CEFR_LEVELS[entry.cefr_level];
-        if (lvl >= 4) difficult.push({ word, level: entry.cefr_level });
-        max = Math.max(max, lvl);
-        total += lvl;
-        count++;
-      }
-    });
+  const words = text.toLowerCase().split(/\s+/);
 
-    setLevel(LEVEL_NAMES[max] || '?');
-    setAverageLevel(count > 0 ? LEVEL_NAMES[Math.round(total / count)] : '?');
-    setDifficultWords(difficult);
-  }, [text, glossary]);
+  const examplePreps = {
+    simple: ["di", "a", "in"],
+    compound: ["del", "nel", "al"],
+    special: ["tranne", "salvo", "durante"]
+  };
+
+  const categorized = {
+    simple: [],
+    compound: [],
+    special: []
+  };
+
+  // Gehe alle Wörter durch und sortiere Präpositionen
+  words.forEach((word) => {
+    if ((dictionary[world].prepositions || []).includes(word)) {
+      // Hier keine Unterscheidung nach Typen - bei Bedarf erweiterbar
+      categorized.simple.push(word);
+    }
+  });
+
+  const renderColored = (prep) => (
+    <span key={prep} className="inline-block bg-yellow-100 text-gray-900 rounded px-2 py-0.5 mr-2 mb-1">
+      {prep}
+    </span>
+  );
+
+  const isHigherLevel = !["A1", "A2"].includes(level);
 
   return (
-    <div className="mt-6 bg-white p-4 rounded shadow">
-      <h3 className="text-lg font-bold mb-2">📊 CEFR-Niveau-Auswertung</h3>
-      <p><strong>Maximales Niveau:</strong> {level}</p>
-      <p><strong>Durchschnittliches Wortniveau:</strong> {averageLevel}</p>
-      {difficultWords.length > 0 && (
-        <div className="mt-2">
-          <p><strong>Schwierige Wörter (B2+):</strong></p>
-          <ul className="list-disc list-inside text-sm">
-            {difficultWords.map((dw, i) => (
-              <li key={i}>{dw.word} (Level: {dw.level})</li>
-            ))}
-          </ul>
+    <div>
+      {isHigherLevel ? (
+        <>
+          {categorized.simple.length > 0 && (
+            <div className="mb-4">
+              <p className="font-semibold text-sm text-gray-800 mb-1">
+                Einfache Präpositionen <span className="text-gray-500">(z. B. {examplePreps.simple.join(", ")})</span>
+              </p>
+              <div className="flex flex-wrap">
+                {categorized.simple.map(renderColored)}
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="mb-4">
+          <p className="text-sm text-gray-700 mb-1">Gefundene Präpositionen:</p>
+          <div className="flex flex-wrap">
+            {categorized.simple.length > 0 ? categorized.simple.map(renderColored) : <span className="text-gray-400">Keine Präpositionen gefunden</span>}
+          </div>
         </div>
       )}
     </div>

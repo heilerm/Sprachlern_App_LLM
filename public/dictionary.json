@@ -1,0 +1,31 @@
+{
+    "cafe": {
+      "subjects": ["ragazzo", "barista", "signora", "cliente", "Lei"],
+      "verbs": ["mangia", "ordina", "prepara", "compra"],
+      "articlesDefinite": ["il", "la"],
+      "articlesIndefinite": ["un", "una", "dei"],
+      "adjectives": ["calda", "italiano", "veloce", "freschi"],
+      "adverbs": [],
+      "prepositions": ["in", "per", "al"]
+    },
+    
+    "hotel": {
+      "subjects": ["ragazzo", "cameriere", "signora", "cliente", "Lei"],
+      "verbs": ["mangia", "ordina", "prepara", "compra"],
+      "articlesDefinite": ["il", "la"],
+      "articlesIndefinite": ["un", "una", "dei"],
+      "adjectives": ["calda", "italiano", "veloce", "freschi"],
+      "adverbs": [],
+      "prepositions": ["in", "per", "al"]
+    },
+
+    "markt": {
+      "subjects": ["ragazzo", "cameriere", "signora", "cliente", "Lei"],
+      "verbs": ["mangia", "ordina", "prepara", "compra"],
+      "articlesDefinite": ["il", "la"],
+      "articlesIndefinite": ["un", "una", "dei"],
+      "adjectives": ["calda", "italiano", "veloce", "freschi"],
+      "adverbs": [],
+      "prepositions": ["in", "per", "al"]
+    }
+  }  

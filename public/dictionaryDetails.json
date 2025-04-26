@@ -1,0 +1,208 @@
+{
+  "il": {
+    "meaning": "der",
+    "category": "bestimmter Artikel",
+    "grammar": "maskulin, Singular",
+    "cefr": "A1",
+    "culture": "Wird vor männlichen Substantiven im Singular verwendet."
+  },
+  "ragazzo": {
+    "meaning": "Junge",
+    "category": "Substantiv",
+    "grammar": "maskulin, Singular",
+    "cefr": "A1",
+    "culture": "Typische Anrede für junge Männer in Italien."
+  },
+  "mangia": {
+    "meaning": "isst",
+    "category": "Verb",
+    "grammar": "3. Person Singular, Präsens",
+    "cefr": "A1",
+    "culture": "Essen spielt eine zentrale Rolle in der italienischen Kultur."
+  },
+  "una": {
+    "meaning": "eine",
+    "category": "unbestimmter Artikel",
+    "grammar": "feminin, Singular",
+    "cefr": "A1",
+    "culture": "Verwendet für weibliche Substantive im Singular."
+  },
+  "pizza": {
+    "meaning": "Pizza",
+    "category": "Substantiv",
+    "grammar": "feminin, Singular",
+    "cefr": "A1",
+    "culture": "Ein Symbol der italienischen Küche weltweit."
+  },
+  "calda": {
+    "meaning": "heiß",
+    "category": "Adjektiv",
+    "grammar": "feminin, Singular",
+    "cefr": "A1",
+    "culture": "Wird oft für Speisen und Getränke verwendet."
+  },
+  "in": {
+    "meaning": "in",
+    "category": "Präposition",
+    "grammar": "-",
+    "cefr": "A1",
+    "culture": "Sehr häufige Präposition im Italienischen."
+  },
+  "un": {
+    "meaning": "ein",
+    "category": "unbestimmter Artikel",
+    "grammar": "maskulin, Singular",
+    "cefr": "A1",
+    "culture": "Verwendet für männliche Substantive im Singular."
+  },
+  "ristorante": {
+    "meaning": "Restaurant",
+    "category": "Substantiv",
+    "grammar": "maskulin, Singular",
+    "cefr": "A1",
+    "culture": "Italienische Restaurants sind weltbekannt für ihre Küche."
+  },
+  "italiano": {
+    "meaning": "italienisch",
+    "category": "Adjektiv",
+    "grammar": "maskulin, Singular",
+    "cefr": "A1",
+    "culture": "Bezieht sich auf Italien oder italienische Herkunft."
+  },
+  "lei": {
+    "meaning": "Sie (höflich)",
+    "category": "Pronomen",
+    "grammar": "3. Person Singular, Höflichkeitsform",
+    "cefr": "A2",
+    "culture": "Im Italienischen wird oft die Höflichkeitsform 'Lei' verwendet."
+  },
+  "ordina": {
+    "meaning": "bestellt",
+    "category": "Verb",
+    "grammar": "3. Person Singular, Präsens",
+    "cefr": "A1",
+    "culture": "In Italien wird präzise und freundlich bestellt."
+  },
+  "barista": {
+    "meaning": "Barista (Kaffeezubereiter/in)",
+    "category": "Substantiv",
+    "grammar": "maskulin oder feminin",
+    "cefr": "A2",
+    "culture": "Berufsbezeichnungen werden im Italienischen oft nicht gegendert.",
+    "video": "https://youtu.be/aZaBzeVbLnQ"
+  },
+  "prepara": {
+    "meaning": "bereitet zu",
+    "category": "Verb",
+    "grammar": "3. Person Singular, Präsens",
+    "cefr": "A2",
+    "culture": "Italienische Küche ist bekannt für frische Zubereitung."
+  },
+  "caffè": {
+    "meaning": "Kaffee",
+    "category": "Substantiv",
+    "grammar": "maskulin, Singular",
+    "cefr": "A1",
+    "culture": "Ein 'caffè' in Italien bedeutet fast immer ein Espresso."
+  },
+  "veloce": {
+    "meaning": "schnell",
+    "category": "Adjektiv",
+    "grammar": "unveränderlich",
+    "cefr": "A2",
+    "culture": "Schneller Service wird in italienischen Bars geschätzt."
+  },
+  "per": {
+    "meaning": "für",
+    "category": "Präposition",
+    "grammar": "-",
+    "cefr": "A1",
+    "culture": "Wird verwendet, um Zweck oder Empfänger anzugeben."
+  },
+  "cliente": {
+    "meaning": "Kunde/Kundin",
+    "category": "Substantiv",
+    "grammar": "maskulin oder feminin",
+    "cefr": "A2",
+    "culture": "Berufsbezeichnungen werden im Italienischen oft nicht gegendert.",
+    "video": "https://youtu.be/aZaBzeVbLnQ"
+  },
+  "la": {
+    "meaning": "die",
+    "category": "bestimmter Artikel",
+    "grammar": "feminin, Singular",
+    "cefr": "A1",
+    "culture": "Verwendet vor weiblichen Substantiven im Singular."
+  },
+  "signora": {
+    "meaning": "Dame",
+    "category": "Substantiv",
+    "grammar": "feminin, Singular",
+    "cefr": "A1",
+    "culture": "Höfliche Anrede für eine Frau."
+  },
+  "compra": {
+    "meaning": "kauft",
+    "category": "Verb",
+    "grammar": "3. Person Singular, Präsens",
+    "cefr": "A1",
+    "culture": "Kaufen auf italienischen Märkten ist ein Erlebnis."
+  },
+  "dei": {
+    "meaning": "einige",
+    "category": "unbestimmter Artikel",
+    "grammar": "maskulin, Plural",
+    "cefr": "A2",
+    "culture": "Mehrzahlform von 'un'."
+  },
+  "fiori": {
+    "meaning": "Blumen",
+    "category": "Substantiv",
+    "grammar": "maskulin, Plural",
+    "cefr": "A1",
+    "culture": "Blumen sind ein typisches Geschenk in Italien."
+  },
+  "freschi": {
+    "meaning": "frisch",
+    "category": "Adjektiv",
+    "grammar": "maskulin, Plural",
+    "cefr": "A2",
+    "culture": "Italien legt großen Wert auf frische Lebensmittel."
+  },
+  "al": {
+    "meaning": "zum, am",
+    "category": "Präposition",
+    "grammar": "zusammengesetzt: a + il",
+    "cefr": "A2",
+    "culture": "Eine der häufigsten Präpositionen im Alltag."
+  },
+  "mercato": {
+    "meaning": "Markt",
+    "category": "Substantiv",
+    "grammar": "maskulin, Singular",
+    "cefr": "A1",
+    "culture": "Märkte sind in Italien sehr beliebt und voller Leben."
+  },
+  "molto": {
+  "meaning": "sehr",
+  "category": "Adverb",
+  "grammar": "unveränderlich",
+  "cefr": "A1",
+  "culture": "Ein häufiger Verstärker im Italienischen, ähnlich wie 'sehr' im Deutschen."
+},
+"brava": {
+  "meaning": "gut, tüchtig",
+  "category": "Adjektiv",
+  "grammar": "feminin, Singular",
+  "cefr": "A1",
+  "culture": "Ein Kompliment für jemanden, der etwas gut gemacht hat."
+},
+"lavoro": {
+  "meaning": "Arbeit",
+  "category": "Substantiv",
+  "grammar": "maskulin, Singular",
+  "cefr": "A1",
+  "culture": "Arbeit und Beruf haben in Italien traditionell einen hohen Stellenwert."
+}
+
+}
