@@ -1,3 +1,30 @@
+<p align="center">
+  <img src="public/logo.png" alt="Sprachwelt Logo" width="150" />
+</p>
+
+# Sprachwelt – Deine KI-gestützte Sprachlernwelt 🌍✨
+
+
+# TEASER:
+Sprachwelt: Deine KI-gestützte Sprachlern-App
+Tauche ein in eine neue Art des Sprachenlernens:
+
+CEFR-basiertes Training (A1–C2)
+
+Intelligente Drag-and-Drop Satzanalyse
+
+Farbige Visualisierung der Satzstruktur
+
+Live-Glossar und grammatikalische Erklärungen
+
+Immersive Welten: Café, Hotel, Markt
+
+KI-Avatare für realistische Konversation
+
+Maximale Benutzerfreundlichkeit ohne Gender-Wirrwarr
+
+Code first. Learning second. Spaß immer. 🚀
+
 # Sprachwelt - Investor Story
 
 Willkommen zur Investor Story von **Sprachwelt**, einer innovativen Sprachlernplattform, die mit KI-Unterstützung neue Maßstäbe setzt.
